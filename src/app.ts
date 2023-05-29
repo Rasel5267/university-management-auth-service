@@ -1,5 +1,12 @@
-import express, { Application } from "express";
+import express, { Application } from 'express'
+import cors from 'cors'
 
-const app: Application = express();
+const app: Application = express()
 
-export default app;
+app.use(cors())
+
+//parser
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
+export default app
