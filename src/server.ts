@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import app from './app'
 import config from './config'
+import { errorLogger, infoLogger } from './shared/logger'
 
 async function bootstrap() {
   try {
@@ -8,10 +9,10 @@ async function bootstrap() {
     console.log(`🛢  Database Connected`)
 
     app.listen(config.port, () => {
-      console.log(`Application listening on port ${config.port}`)
+      infoLogger.info(`Application listening on port ${config.port}`)
     })
   } catch (error) {
-    console.log('Failed to connect database', error)
+    errorLogger.error('Failed to connect database', error)
   }
 }
 
